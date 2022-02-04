@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         V3rmUtilities
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @updateURL    https://raw.githubusercontent.com/xyba1337/V3rmUtilities/main/V3rmUtilities.js
 // @downloadURL  https://raw.githubusercontent.com/xyba1337/V3rmUtilities/main/V3rmUtilities.js
 // @description  additional tools for v3rmillion.net
@@ -10,6 +10,7 @@
 // @icon         https://pbs.twimg.com/profile_images/549393909147639809/inDjQlSs_400x400.png
 // @grant        GM_addStyle
 // ==/UserScript==
+
 (function() {
     'use strict';
 
@@ -54,6 +55,10 @@
                <div>
                   <input type="checkbox" id="fixText" name="scales">
                   <label for="scales">Always use default font</label>
+               </div>
+               <div>
+                  <input type="checkbox" id="openNewTab" name="scales">
+                  <label for="scales">Open threads in new tabs</label>
                </div>
                <div>
                   <input type="checkbox" id="removeCW" name="scales">
@@ -330,6 +335,20 @@
             }
         }
     }
+    
+    const openNewTab = getCookie("openNewTab")
+    if (openNewTab === "true") {
+        var allThreadSubjects;
+        var oldSubjects = Array.prototype.slice.call(document.getElementsByClassName("subject_old"), 0);
+        var newSubjects = Array.prototype.slice.call(document.getElementsByClassName("subject_new"), 0);
+        allThreadSubjects = Array.prototype.concat.call(oldSubjects, newSubjects);
+        for (var i = 0; i < allThreadSubjects.length; i++) {
+            var elem = allThreadSubjects[i].querySelector("a")
+            console.log(elem.href)
+            elem.target = '_blank';
+            console.log(elem.target)
+        }
+    }
 
     const makeSticky = getCookie("stickyNav")
     if (makeSticky === "true") {
@@ -402,6 +421,16 @@ font: normal normal normal 14px/1 FontAwesome !important;
             document.cookie = "oldThreads=true; expires=Thu, 18 Dec 2099 12:00:00 UTC; path=/";
         } else {
             document.cookie = "oldThreads=false; expires=Thu, 18 Dec 2099 12:00:00 UTC; path=/";
+        }
+    })
+
+    const newTToggle = document.getElementById('openNewTab')
+
+    newTToggle.addEventListener('change', (event) => {
+        if (event.currentTarget.checked) {
+            document.cookie = "openNewTab=true; expires=Thu, 18 Dec 2099 12:00:00 UTC; path=/";
+        } else {
+            document.cookie = "openNewTab=false; expires=Thu, 18 Dec 2099 12:00:00 UTC; path=/";
         }
     })
 
