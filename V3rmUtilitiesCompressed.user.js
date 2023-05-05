@@ -1,11 +1,9 @@
 // ==UserScript==
 // @name         V3rmUtilities
-// @namespace    http://tampermonkey.net/
-// @version      0.2
-// @updateURL    https://raw.githubusercontent.com/xyba1337/V3rmUtilities/main/V3rmUtilities.js
-// @downloadURL  https://raw.githubusercontent.com/xyba1337/V3rmUtilities/main/V3rmUtilities.js
+// @namespace    http://v3rmillion.net/
+// @version      0.3
 // @description  additional tools for v3rmillion.net
-// @author       xyba
+// @author       OG: xyba Edit: Roblox Thot
 // @match        https://v3rmillion.net/*
 // @icon         https://pbs.twimg.com/profile_images/549393909147639809/inDjQlSs_400x400.png
 // @grant        GM_addStyle
