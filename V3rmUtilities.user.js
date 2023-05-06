@@ -7,6 +7,8 @@
 // @match        https://v3rmillion.net/*
 // @icon         https://pbs.twimg.com/profile_images/549393909147639809/inDjQlSs_400x400.png
 // @grant        GM_addStyle
+// @grant        GM_getValue
+// @grant        GM_setValue
 // ==/UserScript==
 
 (function() {
